@@ -13,24 +13,9 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.urls import path, include
-from rest_framework import routers, serializers, viewsets
+from django.urls import re_path, include
 
-from Familia.models import Familia
-
-class FamiliaSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Familia
-        fields = ['id','codigo', 'descripcion', 'caracteristicas']
-
-class FamiliaViewSet(viewsets.ModelViewSet):
-    queryset = Familia.objects.all()
-    serializer_class = FamiliaSerializer
-
-router = routers.DefaultRouter()
-router.register(r'familia', FamiliaViewSet)
 
 urlpatterns = [
-    path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
-]
+    re_path(r'^', include('Familia.urls')),   
+    ]
