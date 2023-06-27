@@ -16,7 +16,7 @@ class familia_lista(APIView):
         '''
         List all the todo items for given requested user
         '''
-        familias = Familia.objects.All()#.filter(user = request.user.id)
+        familias = Familia.objects.all()#.filter(user = request.user.id)
         serializer = FamiliaSerializer(familias, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
