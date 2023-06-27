@@ -3,11 +3,11 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import permissions
  
-from Familia.models import Familia
-from Familia.serializers import FamiliaSerializer
+from inventario.models import Inventario
+from inventario.serializers import InventarioSerializer
 
 
-class familia_lista(APIView):
+class inventario_lista(APIView):
     # add permission to check if user is authenticated
     permission_classes = [permissions.IsAuthenticated]
 
@@ -16,8 +16,8 @@ class familia_lista(APIView):
         '''
         List all the todo items for given requested user
         '''
-        familias = Familia.objects.all()#.filter(user = request.user.id)
-        serializer = FamiliaSerializer(familias, many=True)
+        inventario = Inventario.objects.all()#.filter(user = request.user.id)
+        serializer = InventarioSerializer(inventario, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     # 2. Create
@@ -30,7 +30,7 @@ class familia_lista(APIView):
             'descripcion': request.data.get('descripcion'), 
             #'user': request.user.id
         }
-        serializer = FamiliaSerializer(data=data)
+        serializer = InventarioSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
