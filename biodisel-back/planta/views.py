@@ -27,7 +27,7 @@ class planta_lista(APIView):
         '''
         data = {
             'codigo': request.data.get('codigo'), 
-            'descripcion': request.data.get('descripcion'), 
+            'nombre': request.data.get('nombre'), 
             #'user': request.user.id
         }
         serializer =  PlantaSerializer(data=data)

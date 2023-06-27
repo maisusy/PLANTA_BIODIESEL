@@ -27,7 +27,7 @@ class equipos_lista(APIView):
         '''
         data = {
             'codigo': request.data.get('codigo'), 
-            'descripcion': request.data.get('descripcion'), 
+            'tipo': request.data.get('tipo'), 
             #'user': request.user.id
         }
         serializer = EquiposSerializer(data=data)

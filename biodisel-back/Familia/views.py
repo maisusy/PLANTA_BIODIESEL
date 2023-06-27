@@ -19,7 +19,6 @@ class familia_lista(APIView):
         familias = Familia.objects.all()#.filter(user = request.user.id)
         serializer = FamiliaSerializer(familias, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
-
     # 2. Create
     def post(self, request, *args, **kwargs):
         '''
@@ -30,6 +29,7 @@ class familia_lista(APIView):
             'descripcion': request.data.get('descripcion'), 
             #'user': request.user.id
         }
+        
         serializer = FamiliaSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
@@ -52,7 +52,6 @@ class familia_id(APIView):
             return Familia.objects.get(id=id)
         except Familia.DoesNotExist:
             return None
-
     # 2. Retrieve
     def get(self, request, id, *args, **kwargs):
         '''
@@ -67,7 +66,6 @@ class familia_id(APIView):
 
         serializer = FamiliaSerializer(todo_instance)
         return Response(serializer.data, status=status.HTTP_200_OK)
-
      # 3. Update
     def put(self, request, id, *args, **kwargs):
         '''
@@ -88,7 +86,6 @@ class familia_id(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
     # 4. Delete
     def delete(self, request, id, *args, **kwargs):
         '''

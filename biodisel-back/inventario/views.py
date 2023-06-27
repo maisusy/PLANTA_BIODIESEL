@@ -28,6 +28,7 @@ class inventario_lista(APIView):
         data = {
             'codigo': request.data.get('codigo'), 
             'descripcion': request.data.get('descripcion'), 
+            'caracteristicas': request.data.get('caracteristicas'), 
             #'user': request.user.id
         }
         serializer = InventarioSerializer(data=data)
