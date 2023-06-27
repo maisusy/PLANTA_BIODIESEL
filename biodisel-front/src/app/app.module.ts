@@ -8,15 +8,17 @@ import { SectorComponent } from './sector/sector.component';
 import { EquiposComponent } from './equipos/equipos.component';
 import { FamiliaComponent } from './familia/familia.component';
 import { InventarioComponent } from './inventario/inventario.component';
+import { PlantaComponent } from './planta/planta.component';
 
 @NgModule({
-  declarations: [					
+  declarations: [						
     AppComponent,
       FamiliaComponent,
       SectorComponent,
       EquiposComponent,
       FamiliaComponent,
-      InventarioComponent
+      InventarioComponent,
+      PlantaComponent
    ],
   imports: [
     BrowserModule,

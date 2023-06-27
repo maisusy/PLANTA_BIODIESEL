@@ -7,7 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FamiliaComponent implements OnInit {
 
+  familias : any = [];
+
+
   constructor() { }
+
+
 
   ngOnInit() {
   }

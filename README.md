@@ -17,3 +17,12 @@ source entorno/bin/activate
 pip install djangorestframework
 python3 -m pip install django-cors-headers
 pip install psycopg2-binary
+
+
+----FRONT-----
+
+RUN
+ng runserve --open
+
+INSTALL
+nmp install -g @angular/cli
