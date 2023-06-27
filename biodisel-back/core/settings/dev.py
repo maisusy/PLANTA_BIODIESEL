@@ -54,7 +54,10 @@ INSTALLED_APPS = [
     'core',
     'Familia',
     'inventario',
-    "corsheaders",
+    'equipos',
+    'planta',
+    'sector',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
