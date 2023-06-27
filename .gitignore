@@ -1,4 +1,4 @@
-BACK/entorno
-BACK/biodisel/core/__pycache__
-BACK/biodisel/core/settings/__pycache__
-BACK/biodisel/Familia/__pycache__
+/entorno
+biodisel-back/core/__pycache__
+biodisel-back/core/settings/__pycache__
+biodisel-back/Familia/__pycache__
