@@ -1,6 +1,8 @@
-from django.urls import re_path
-from Familia import views
+from django.urls import path, include
+from Familia.views import (
+    familia_lista,
+)
 
 urlpatterns = [
-    re_path(r'^api/familia$',views.familia_lista)
+    path('api', familia_lista.as_view()),
 ]
