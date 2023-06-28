@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FamiliaComponent } from './familia.component';
 
 const routes: Routes = [
-   { path: 'familia', loadChildren: () => import('./familia/familia.module').then(m => m.FamiliaModule)},
-   { path:'',redirectTo:'familia',pathMatch:'full'},
-
+   { path: '', component : FamiliaComponent},
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class FamiliaRoutingModule { }

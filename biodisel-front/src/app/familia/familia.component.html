@@ -1,13 +1,66 @@
-content_copy
-<h2>FAMILIA</h2>
 
-<div *ngFor="let familia of familias">
+<app-abm-familia [visible]="modal == 'Familia'" (success)="success()" [datos]="modalDatos" ></app-abm-familia>
+<p-toast key="familia"></p-toast>
 
-  <h3>
-      {{ familia.codigo }}
-  </h3>
-  <h3>
-      {{ familia.nombre }}
-  </h3>
 
-</div>
+<p-table
+    #dt2
+    [value]="Familias"
+    dataKey="id"
+    [rows]="10"
+    [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[10, 25, 50]"
+    [loading]="loading"
+    [paginator]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [globalFilterFields]="['codigo', 'descripcion']"
+    [tableStyle]="{ 'min-width': '75rem' }"
+    >
+    <!-- <ng-template pTemplate="caption">
+        <div class="flex">
+            <span class="p-input-icon-left ml-auto">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" (input)="dt2.filterGlobal($event.target.value, 'contains')" placeholder="Search keyword" />
+            </span>
+        </div>
+    </ng-template> -->
+    
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width:22%">Codigo</th>
+            <th style="width:22%">Descripcion</th>
+            <th style="width:12%">Acciones</th>
+        </tr>
+        <tr>
+            <th>
+                <p-columnFilter type="text" field="codigo"></p-columnFilter>
+            </th>
+            <th>
+                <p-columnFilter type="text" field="descripcion"></p-columnFilter>
+            </th>
+            <th>
+                <p-button label="Agregar" (onClick)="MODAL('Familia',null)" styleClass="p-button-raised p-button-success"></p-button>
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-familia>
+        <tr>
+            <td>
+                {{ familia.codigo }}
+            </td>
+            <td>
+                {{ familia.descripcion }}
+            </td>
+            <td>
+                <p-button label="Modificar" styleClass="p-button-raised"(onClick)="MODAL('Familia',familia)"> </p-button>
+                <p-button label="Eliminar" styleClass="p-button-raised p-button-danger"(onClick)="Confirmar($event,familia.id)"> </p-button>
+            
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+        <tr>
+            <td colspan="5">No customers found.</td>
+        </tr>
+    </ng-template>
+</p-table>
