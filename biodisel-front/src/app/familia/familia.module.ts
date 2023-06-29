@@ -11,12 +11,14 @@ import { PanelMenuModule } from 'primeng/panelmenu';
 import { DividerModule } from 'primeng/divider';
 import { FamiliaComponent } from './familia.component';
 import { AbmfamiliaModule } from './abm-familia/abm-familia.module';
+import { FamiliaRoutingModule } from './familia-routing.module';
 
 @NgModule({
   declarations: [
     FamiliaComponent,
   ],
   imports: [
+    FamiliaRoutingModule,
     CommonModule,
     ToolbarModule,
     BreadcrumbModule,
@@ -28,9 +30,6 @@ import { AbmfamiliaModule } from './abm-familia/abm-familia.module';
     PanelMenuModule,
     DividerModule,
     AbmfamiliaModule
-  ],
-  exports: [
-    FamiliaComponent,
   ],
 })
 export class FamiliaModule { }
