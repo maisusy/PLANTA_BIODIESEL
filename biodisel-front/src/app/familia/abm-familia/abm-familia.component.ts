@@ -53,7 +53,8 @@ export class AbmFamiliaComponent implements OnInit {
     if (this.formsFamilia.valid) {
       if (this.datos == null) {
         delete this.formsFamilia.value.id
-        this.FamiliaService.AgregarFamilia(this.formsFamilia.value).subscribe(_ => {
+        this.FamiliaService.AgregarFamilia(this.formsFamilia.value)
+        .subscribe(_ => {
           this.messageService.add({ key: 'abm-familia', severity: 'success', summary: `${this.accion} familia`, detail: 'La acción se realizo correctamente' });
         }, error => {
           console.log(error)
@@ -61,7 +62,8 @@ export class AbmFamiliaComponent implements OnInit {
         })
       } else {
         let id = Number(this.formsFamilia.value.id)
-        this.FamiliaService.ActualizarFamilia(id,this.formsFamilia.value).subscribe(_ => {
+        this.FamiliaService.ActualizarFamilia(id,this.formsFamilia.value)
+        .subscribe(_ => {
           this.messageService.add({ key: 'abm-familia', severity: 'success', summary: `${this.accion} familia`, detail: 'La acción se realizo correctamente' });
         }, error => {
           console.log(error)

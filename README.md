@@ -27,3 +27,7 @@ ng runserve --open
 INSTALL
 nmp install -g @angular/cli
 npm i primeng
+npm i primeflex 
+npm i primeicons
+O  
+npm i 

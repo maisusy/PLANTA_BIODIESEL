@@ -26,7 +26,7 @@ export class FamiliaService {
   }
 
   ActualizarFamilia(id : number,datos : any){
-    return this.http.delete(`${this.URL}/familia/api/${id}/`,datos)
+    return this.http.put(`${this.URL}/familia/api/${id}/`,datos)
   }
 
 }

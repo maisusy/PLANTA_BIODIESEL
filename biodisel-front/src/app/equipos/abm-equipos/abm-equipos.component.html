@@ -1,0 +1,29 @@
+<p-dialog (onHide)="hide()" (onShow)="show()" [(visible)]="visible" [modal]="true" [style]="{width: '40vw'}">
+  <ng-template pTemplate="header">
+      {{accion.toLocaleUpperCase()}} Equipos
+  </ng-template>
+  <form [formGroup]="formsEquipos">
+      <div class="p-fluid mt-2">
+        <div class="p-field">
+            <span class="p-float-label">
+                <input formControlName="codigo" class="p-inputtext-lg {{invalid}}" id="float-input" type="text" pInputText>
+                <label for="float-input">Ingrese un codigo</label>
+            </span>
+            <small *ngIf="invalid != ''" id="username2-help" class="p-error">Debe ingresar un codigo</small>
+        </div>
+          <div class="p-field">
+              <span class="p-float-label">
+                  <input formControlName="tipo" class="p-inputtext-lg {{invalid}}" id="float-input" type="text" pInputText>
+                  <label for="float-input">Ingrese un tipo</label>
+              </span>
+              <small *ngIf="invalid != ''" id="username2-help" class="p-error">Debe ingresar un tipo</small>
+          </div>
+      </div>
+  </form>
+  <ng-template pTemplate="footer">
+      <button pButton pRipple class="p-button-outlined-success" (click)="submit()" label="Guardar" iconPos="right"></button>
+  </ng-template>
+</p-dialog>
+
+<p-toast key="abm-Equipos"></p-toast>
+

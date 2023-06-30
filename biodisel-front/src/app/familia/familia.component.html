@@ -15,14 +15,15 @@
     [globalFilterFields]="['codigo', 'descripcion']"
     [tableStyle]="{ 'min-width': '75rem' }"
     >
-    <!-- <ng-template pTemplate="caption">
+
+     <!-- <ng-template pTemplate="caption">
         <div class="flex">
             <span class="p-input-icon-left ml-auto">
                 <i class="pi pi-search"></i>
                 <input pInputText type="text" (input)="dt2.filterGlobal($event.target.value, 'contains')" placeholder="Search keyword" />
             </span>
         </div>
-    </ng-template> -->
+    </ng-template>  -->
     
     <ng-template pTemplate="header">
         <tr>
@@ -38,7 +39,7 @@
                 <p-columnFilter type="text" field="descripcion"></p-columnFilter>
             </th>
             <th>
-                <p-button label="Agregar" (onClick)="MODAL('Familia',null)" styleClass="p-button-raised p-button-success"></p-button>
+                <p-button icon="pi pi-plus" (onClick)="MODAL('Familia',null)" styleClass="p-button-raised p-button-success"></p-button>
             </th>
         </tr>
     </ng-template>
@@ -51,8 +52,10 @@
                 {{ familia.descripcion }}
             </td>
             <td>
-                <p-button label="Modificar" styleClass="p-button-raised"(onClick)="MODAL('Familia',familia)"> </p-button>
-                <p-button label="Eliminar" styleClass="p-button-raised p-button-danger"(onClick)="Confirmar($event,familia.id)"> </p-button>
+                <p-toast></p-toast>
+                <p-confirmPopup></p-confirmPopup>
+                <p-button icon="pi pi-pencil" styleClass="p-button-raised"(onClick)="MODAL('Familia',familia)"> </p-button>
+                <p-button icon="pi pi-trash" styleClass="p-button-raised p-button-danger"(onClick)="Confirmar($event,familia.id)"> </p-button>
             
             </td>
         </tr>
