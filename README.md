@@ -1,33 +1,45 @@
-----BACK-----
+# -----BACK----- #
 
 RUN 
+```
 python3 manage.py makemigrations --settings=core.settings.dev 
 python3 manage.py migrate --settings=core.settings.dev 
 python3 manage.py createsuperuser --settings=core.settings.dev 
 python3 manage.py runserver --settings=core.settings.dev 
-
-INSTALL
-ENTORNO
+```
+INSTALL ENTORNO
+```bash
+# actualizar paquetes
 sudo apt install python3-pip
 sudo apt install python3-venv
+
+# crear y activar entorno
 python3 -m venv entorno
 source entorno/bin/activate
- python3 -m pip install django
-  python3 -m pip install django-admin
-pip install djangorestframework
+
+# instalar dependencias del backend
+python3 -m pip install django
+python3 -m pip install django-admin
+pythin3 -m pip install djangorestframework
 python3 -m pip install django-cors-headers
-pip install psycopg2-binary
+python3 -m pip install psycopg2-binary
+```
 
-
-----FRONT-----
+# ----FRONT----- #
 
 RUN
+```bash
 ng runserve --open
+```
 
 INSTALL
+```bash
 nmp install -g @angular/cli
 npm i primeng
 npm i primeflex 
 npm i primeicons
-O  
+```
+O
+```bash
 npm i 
+```
