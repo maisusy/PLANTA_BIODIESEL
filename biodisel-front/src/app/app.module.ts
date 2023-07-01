@@ -7,9 +7,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StylesModule } from './styles.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { MenunavModule } from './menunav/menunav.module';
 
 @NgModule({
-  declarations: [						
+  declarations: [							
     AppComponent,
    ],
   imports: [
@@ -17,7 +18,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     HttpClientModule,
     StylesModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MenunavModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
