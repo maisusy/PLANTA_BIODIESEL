@@ -116,18 +116,6 @@ DATABASES = {
   }
 }
 
-# DATABASES = {
-#   'default': {
-#     'ENGINE': 'django.db.backends.mysql',
-#     'NAME': 'biodiesel',
-#     'HOST': 'aws.connect.psdb.cloud',
-#     'PORT': '3306',
-#     'USER': 'i60sdljyk8ufcp5bk9n8',
-#     'PASSWORD': 'pscale_pw_jDepGP6j6N8iBl3hFuqVOzrvNicxGyXiVmm9NjcvZR8',
-#     'OPTIONS': { 'ssl': { 'ca': '/etc/ssl/certs/ca-certificates.crt' } },
-#   },
-# }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
