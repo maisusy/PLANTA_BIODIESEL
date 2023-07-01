@@ -9,17 +9,17 @@ import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { ToastModule } from 'primeng/toast';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { DividerModule } from 'primeng/divider';
-import { FamiliaComponent } from './familia.component';
-import { AbmfamiliaModule } from '../familia/abm-familia/abm-familia.module';
-import { FamiliaRoutingModule } from './familia-routing.module';
+import { InventarioComponent } from './inventario.component';
+import { AbmInventarioModule } from './abm-inventario/abm-inventario.module';
+import { InventarioRoutingModule } from './inventario-routing.module';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 
 @NgModule({
   declarations: [
-    FamiliaComponent,
+    InventarioComponent,
   ],
   imports: [
-    FamiliaRoutingModule,
+    InventarioRoutingModule,
     CommonModule,
     ToolbarModule,
     BreadcrumbModule,
@@ -30,8 +30,8 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
     ToastModule,
     PanelMenuModule,
     DividerModule,
-    AbmfamiliaModule,
+    AbmInventarioModule,
     DynamicDialogModule
   ],
 })
-export class FamiliaModule { }
+export class InventarioModule { }

@@ -1,3 +1,75 @@
-<p>
-  inventario works!
-</p>
+
+<app-abm-inventario [visible]="modal == 'inventario'" (success)="success()" [datos]="modalDatos" ></app-abm-inventario>
+<p-toast key="inventario"></p-toast>
+
+<p-table
+    #dt2
+    [value]="Inventarios"
+    dataKey="id"
+    [rows]="10"
+    [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[10, 25, 50]"
+    [loading]="loading"
+    [paginator]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [globalFilterFields]="['codigo', 'descripcion','caracteristicas']"
+    [tableStyle]="{ 'min-width': '75rem' }"
+    >
+
+     <!-- <ng-template pTemplate="caption">
+        <div class="flex">
+            <span class="p-input-icon-left ml-auto">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" (input)="dt2.filterGlobal($event.target.value, 'contains')" placeholder="Search keyword" />
+            </span>
+        </div>
+    </ng-template>  -->
+    
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width:22%">Codigo</th>
+            <th style="width:22%">Descripcion</th>
+            <th style="width:12%">Caracteristicas</th>
+            <th style="width:12%">Acciones</th>
+        </tr>
+        <tr>
+            <th>
+                <p-columnFilter type="text" field="codigo"></p-columnFilter>
+            </th>
+            <th>
+                <p-columnFilter type="text" field="descripcion"></p-columnFilter>
+            </th>
+            <th>
+                <p-columnFilter type="text" field="caracteristicas"></p-columnFilter>
+            </th>
+            <th>
+                <p-button icon="pi pi-plus" (onClick)="MODAL('inventario',null)" styleClass="p-button-raised p-button-success"></p-button>
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-inventario>
+        <tr>
+            <td>
+                {{ inventario.codigo }}
+            </td>
+            <td>
+                {{ inventario.descripcion }}
+            </td>
+            <td>
+              {{ inventario.caracteristicas }}
+          </td>
+            <td>
+                <p-toast></p-toast>
+                <p-confirmPopup></p-confirmPopup>
+                <p-button icon="pi pi-pencil" styleClass="p-button-raised"(onClick)="MODAL('inventario',inventario)"> </p-button>
+                <p-button icon="pi pi-trash" styleClass="p-button-raised p-button-danger"(onClick)="Confirmar($event,inventario.id)"> </p-button>
+            
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+        <tr>
+            <td colspan="5">No customers found.</td>
+        </tr>
+    </ng-template>
+</p-table>

@@ -20,6 +20,8 @@ source entorno/bin/activate
 # instalar dependencias del backend
 python3 -m pip install django
 python3 -m pip install django-admin
+pip install djangorestframework
+pip install django-environ
 pythin3 -m pip install djangorestframework
 python3 -m pip install django-cors-headers
 python3 -m pip install psycopg2-binary

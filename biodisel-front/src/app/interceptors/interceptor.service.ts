@@ -11,7 +11,7 @@ export class InterceptorService implements HttpInterceptor{
 
     const headers = new HttpHeaders({
       'Content-Type' : 'application/json',
-      'Authorization' : 'Basic '+ btoa('uwu:cordero13')
+      'Authorization' : 'Basic '+ btoa('admin:123')
     });
 
     const reqClone = req.clone({

@@ -1,4 +1,4 @@
-/entorno
+/mi_entorno
 biodisel-back/core/__pycache__
 biodisel-back/core/settings/__pycache__
 biodisel-back/inventario/__pycache__
@@ -6,3 +6,4 @@ biodisel-back/Familia/__pycache__
 biodisel-back/sector/__pycache__
 biodisel-back/equipos/__pycache__
 biodisel-back/planta/__pycache__
+biodisel-back/core/settings/.env
