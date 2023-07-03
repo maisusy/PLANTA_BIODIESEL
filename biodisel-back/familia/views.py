@@ -3,8 +3,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import permissions
  
-from Familia.models import Familia
-from Familia.serializers import FamiliaSerializer
+from familia.models import Familia
+from familia.serializers import FamiliaSerializer
 
 
 class familia_lista(APIView):

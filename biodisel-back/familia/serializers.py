@@ -1,6 +1,6 @@
 
 from rest_framework import  serializers
-from Familia.models import Familia
+from familia.models import Familia
 
 class FamiliaSerializer(serializers.ModelSerializer):
     class Meta:
