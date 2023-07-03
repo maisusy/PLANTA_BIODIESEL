@@ -22,7 +22,7 @@ export class AbmPlantaComponent implements OnInit {
   formsPlanta = new FormGroup({
     'id': new FormControl(''),
     'codigo': new FormControl('', Validators.required),
-    'tipo': new FormControl('', Validators.required)
+    'nombre': new FormControl('', Validators.required)
   })
 
   constructor(

@@ -1,3 +1,59 @@
-<p>
-  sector works!
-</p>
+
+<app-abm-sector [visible]="modal == 'Sector'" (success)="success()" [datos]="modalDatos" ></app-abm-sector>
+<p-toast key="sector"></p-toast>
+
+<p-table
+    #dt2
+    [value]="Sector"
+    dataKey="id"
+    [rows]="10"
+    [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[10, 25, 50]"
+    [loading]="loading"
+    [paginator]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [globalFilterFields]="['codigo', 'nombre']"
+    [tableStyle]="{ 'min-width': '75rem' }"
+    >
+    
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width:22%">Codigo</th>
+            <th style="width:22%">nombre</th>
+            <th style="width:12%">Acciones</th>
+        </tr>
+        <tr>
+            <th>
+                <p-columnFilter type="text" field="codigo"></p-columnFilter>
+            </th>
+            <th>
+                <p-columnFilter type="text" field="nombre"></p-columnFilter>
+            </th>
+            <th>
+                <p-button icon="pi pi-plus" (onClick)="MODAL('Sector',null)" styleClass="p-button-raised p-button-success"></p-button>
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-sector>
+        <tr>
+            <td>
+                {{ sector.codigo }}
+            </td>
+            <td>
+                {{ sector.nombre }}
+            </td>
+            <td>
+                <p-toast></p-toast>
+                <p-confirmPopup></p-confirmPopup>
+                <p-button icon="pi pi-pencil" styleClass="p-button-raised"(onClick)="MODAL('Sector',sector)"> </p-button>
+                <p-button icon="pi pi-trash" styleClass="p-button-raised p-button-danger"(onClick)="Confirmar($event,sector.id)"> </p-button>
+            
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+        <tr>
+            <td colspan="5">No customers found.</td>
+        </tr>
+    </ng-template>
+</p-table>

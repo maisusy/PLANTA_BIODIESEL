@@ -14,19 +14,19 @@ export class PlantaService {
   }
 
   obtenerPlanta(){
-    return this.http.get(`${this.URL}/plata/api`)
+    return this.http.get(`${this.URL}/planta/api`)
   }
 
   AgregarPlanta(datos : any){
-    return this.http.post(`${this.URL}/plata/api`,datos)
+    return this.http.post(`${this.URL}/planta/api`,datos)
   }
   
   EliminarPlanta(id : number){
-    return this.http.delete(`${this.URL}/plata/api/${id}/`)
+    return this.http.delete(`${this.URL}/planta/api/${id}/`)
   }
 
   ActualizarPlanta(id : number,datos : any){
-    return this.http.put(`${this.URL}/plata/api/${id}/`,datos)
+    return this.http.put(`${this.URL}/planta/api/${id}/`,datos)
   }
 
 }
