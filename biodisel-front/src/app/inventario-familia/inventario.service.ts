@@ -13,24 +13,24 @@ export class InventarioService {
   }
 
   obtenerInventario(){
-    return this.http.get(`${this.URL}/inventario/api`)
+    return this.http.get(`${this.URL}/inventario_familia/api`)
   }
 
   AgregarInventario(datos : any){
-    return this.http.post(`${this.URL}/inventario/api`,datos)
+    return this.http.post(`${this.URL}/inventario_familia/api`,datos)
   }
   
   EliminarInventario(id : number){
-    return this.http.delete(`${this.URL}/inventario/api/${id}/`)
+    return this.http.delete(`${this.URL}/inventario_familia/api/${id}/`)
   }
 
 
   EliminarTodoInventario(){
-    return this.http.delete(`${this.URL}/inventario/api`)
+    return this.http.delete(`${this.URL}/inventario_familia/api`)
   }
 
   ActualizarInventario(id : number,datos : any){
-    return this.http.put(`${this.URL}/inventario/api/${id}/`,datos)
+    return this.http.put(`${this.URL}/inventario_familia/api/${id}/`,datos)
   }
 
 }

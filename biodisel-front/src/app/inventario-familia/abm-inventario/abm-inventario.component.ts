@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
-import { InventarioService } from '../../inventario/inventario.service';
+import { InventarioService } from '../inventario.service';
 
 @Component({
   selector: 'app-abm-inventario',
