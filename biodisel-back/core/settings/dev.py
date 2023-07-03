@@ -54,7 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'core',
-    'Familia',
+    'familia',
     'inventario',
     'equipos',
     'planta',
@@ -98,23 +98,23 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'FAMILIA_DEV.sqlite3',
-#     }
-# }
-
 DATABASES = {
-  'default': {
-      'ENGINE': 'django.db.backends.postgresql',
-        'HOST': config("DATABASE_HOST"),
-        'NAME': config("DATABASE_NAME"),
-        'PORT': config("DATABASE_PORT"),
-        'USER': config("DATABASE_USER"),
-        'PASSWORD': config("DATABASE_PASS"),
-  }
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'BIODISEL.sqlite3',
+    }
 }
+
+# DATABASES = {
+#   'default': {
+#       'ENGINE': 'django.db.backends.postgresql',
+#         'HOST': config("DATABASE_HOST"),
+#         'NAME': config("DATABASE_NAME"),
+#         'PORT': config("DATABASE_PORT"),
+#         'USER': config("DATABASE_USER"),
+#         'PASSWORD': config("DATABASE_PASS"),
+#   }
+# }
 
 
 # Password validation
