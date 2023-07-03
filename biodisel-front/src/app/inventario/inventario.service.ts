@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environments';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -23,6 +22,11 @@ export class InventarioService {
   
   EliminarInventario(id : number){
     return this.http.delete(`${this.URL}/inventario/api/${id}/`)
+  }
+
+
+  EliminarTodoInventario(){
+    return this.http.delete(`${this.URL}/inventario/api`)
   }
 
   ActualizarInventario(id : number,datos : any){

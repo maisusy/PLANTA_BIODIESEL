@@ -96,6 +96,19 @@ export class InventarioComponent implements OnInit {
     
   }
 
+  EliminarTodo(){
+
+    this.InventarioService.EliminarTodoInventario()
+    .subscribe( _ => {
+      this.messageService.add({key: 'abm-inventario', severity:'success', summary: `ELIMINACIÓN TODO inventario` , detail:'La acción se realizo correctamente'});
+      this.success()
+    }, error => {
+      console.log(error)
+      this.messageService.add({key: 'abm-inventario', severity:'error', summary: `ELIMINACIÓN TODO inventario` , detail: error.error.error});
+    })
+    
+  }
+
   ObtenerInventarios(){
     this.InventarioService.obtenerInventario()
     .subscribe(
