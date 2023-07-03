@@ -1,5 +1,5 @@
 from django.urls import path, include
-from inventario.views import (
+from inventario_familia.views import (
     inventario_lista,
     inventario_id
 )

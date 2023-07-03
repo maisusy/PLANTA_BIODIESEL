@@ -3,8 +3,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import permissions
  
-from inventario.models import Inventario
-from inventario.serializers import InventarioSerializer
+from inventario_equipo.models import Inventario_equipo
+from inventario_equipo.serializers import InventarioEquipoSerializer
 
 
 class inventario_lista(APIView):
@@ -16,8 +16,8 @@ class inventario_lista(APIView):
         '''
         List all the todo items for given requested user
         '''
-        inventario = Inventario.objects.all()#.filter(user = request.user.id)
-        serializer = InventarioSerializer(inventario, many=True)
+        inventario_equipo = Inventario_equipo.objects.all()#.filter(user = request.user.id)
+        serializer = InventarioEquipoSerializer(inventario_equipo, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     # 2. Create
@@ -31,7 +31,7 @@ class inventario_lista(APIView):
             'caracteristicas': request.data.get('caracteristicas'), 
             #'user': request.user.id
         }
-        serializer = InventarioSerializer(data=data)
+        serializer = InventarioEquipoSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -41,7 +41,7 @@ class inventario_lista(APIView):
         '''
         Deletes the todo item with given id if exists
         '''
-        todo_instance = Inventario.objects.all()
+        todo_instance = Inventario_equipo.objects.all()
         if not todo_instance:
             return Response(
                 {"res": "Object with todo id does not exists"}, 
@@ -65,8 +65,8 @@ class inventario_id(APIView):
         Helper method to get the object with given id, and user_id
         '''
         try:
-            return Inventario.objects.get(id=id)
-        except Inventario.DoesNotExist:
+            return Inventario_equipo.objects.get(id=id)
+        except Inventario_equipo.DoesNotExist:
             return None
     # 2. Retrieve
     def get(self, request, id, *args, **kwargs):
@@ -80,7 +80,7 @@ class inventario_id(APIView):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
-        serializer = InventarioSerializer(todo_instance)
+        serializer = InventarioEquipoSerializer(todo_instance)
         return Response(serializer.data, status=status.HTTP_200_OK)
      # 3. Update
     def put(self, request, id, *args, **kwargs):
@@ -98,7 +98,7 @@ class inventario_id(APIView):
             'descripcion': request.data.get('descripcion'), 
             'caracteristicas': request.data.get('caracteristicas'), 
         }
-        serializer = InventarioSerializer(instance = todo_instance, data=data, partial = True)
+        serializer = InventarioEquipoSerializer(instance = todo_instance, data=data, partial = True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
