@@ -1,6 +1,6 @@
 <p-menubar>
   <ng-template pTemplate="start">
-      <img src="../../img/productos-quimicos.png" />
+      <img src="{{env.myVarForImageURLS}}/productos-quimicos.png" height="40" />
   </ng-template>
   <ng-template pTemplate="end">
     <p-tabMenu [model]="items" [activeItem]="activeItem" (activeItemChange)="onActiveItemChange($event)"></p-tabMenu>
