@@ -13,6 +13,7 @@ import { InventarioComponent } from './inventario.component';
 import { AbmInventarioModule } from './abm-inventario/abm-inventario.module';
 import { InventarioRoutingModule } from './inventario-routing.module';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { FileUploadModule } from 'primeng/fileupload';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
     ButtonModule,
     MenubarModule,
     ConfirmPopupModule,
+    FileUploadModule,
     ToastModule,
     PanelMenuModule,
     DividerModule,

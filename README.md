@@ -41,6 +41,9 @@ npm install -g @angular/cli
 npm i primeng
 npm i primeflex 
 npm i primeicons
+npm i file-saver
+npm i xlsx
+npm i read-excel-file
 ```
 O
 ```bash

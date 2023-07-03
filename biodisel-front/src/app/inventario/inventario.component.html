@@ -16,15 +16,6 @@
     [tableStyle]="{ 'min-width': '75rem' }"
     >
 
-     <!-- <ng-template pTemplate="caption">
-        <div class="flex">
-            <span class="p-input-icon-left ml-auto">
-                <i class="pi pi-search"></i>
-                <input pInputText type="text" (input)="dt2.filterGlobal($event.target.value, 'contains')" placeholder="Search keyword" />
-            </span>
-        </div>
-    </ng-template>  -->
-    
     <ng-template pTemplate="header">
         <tr>
             <th style="width:22%">Codigo</th>
@@ -44,6 +35,9 @@
             </th>
             <th>
                 <p-button icon="pi pi-plus" (onClick)="MODAL('inventario',null)" styleClass="p-button-raised p-button-success"></p-button>
+                <p-button icon="pi pi-trash" label="Todo" (onClick)="ConfirmarTodo($event)" styleClass="p-button-raised p-button-danger"></p-button>
+                <p-button label="Exportar" icon="pi pi-file-excel" (click)="exportExcel()" class="p-button-raised p-button-success" pTooltip="XLS" ></p-button>
+                <p-fileUpload name="import" mode="basic" [auto]="true" chooseIcon="pi pi-file-excel" chooseLabel="Importar" accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" [maxFileSize]="1000000" (onSelect)="onExcelUpload($event)"></p-fileUpload>
             </th>
         </tr>
     </ng-template>
@@ -63,7 +57,6 @@
                 <p-confirmPopup></p-confirmPopup>
                 <p-button icon="pi pi-pencil" styleClass="p-button-raised"(onClick)="MODAL('inventario',inventario)"> </p-button>
                 <p-button icon="pi pi-trash" styleClass="p-button-raised p-button-danger"(onClick)="Confirmar($event,inventario.id)"> </p-button>
-            
             </td>
         </tr>
     </ng-template>

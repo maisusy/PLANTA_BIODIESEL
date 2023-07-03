@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component , OnInit , ViewChild , ElementRef } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { InventarioService } from './inventario.service'
 import { PrimeNGConfig } from 'primeng/api';
+import * as FileSaver from 'file-saver';
+import readXlsxFile from 'read-excel-file';
+import { FileSelectEvent } from 'primeng/fileupload';
+
 
 @Component({
   selector: 'app-inventario',
@@ -34,15 +38,13 @@ export class InventarioComponent implements OnInit {
       'endsWith' : 'Que finalize con',
       'equals' : 'Que sea igual a',
       'notEquals' : 'Que NO sea igual a',
-      'noFilter' : 'Sin filtros'
-
+      'noFilter' : 'Sin filtros',
     })
     this.ObtenerInventarios()
   
   }
 
   success(){
-    
     this.modal = '';
     this.ObtenerInventarios()
   }
@@ -63,6 +65,20 @@ export class InventarioComponent implements OnInit {
           },
           reject: () => {
               //reject action
+        }
+    });
+  }
+
+  ConfirmarTodo(event : Event ){
+      this.confirmationService.confirm({
+        target: event.target!,
+        message: '¿Estas seguro?',
+        icon: 'pi pi-exclamation-triangle',
+        accept: () => {
+          this.EliminarTodo()
+        },
+        reject: () => {
+          //reject action
         }
     });
   }
@@ -91,4 +107,28 @@ export class InventarioComponent implements OnInit {
       )
   }
 
+  exportExcel() {
+    import('xlsx').then((xlsx) => {
+        const worksheet = xlsx.utils.json_to_sheet(this.Inventarios);
+        const workbook = { Sheets: { data: worksheet }, SheetNames: ['data'] };
+        const excelBuffer: any = xlsx.write(workbook, { bookType: 'xlsx', type: 'array' });
+        this.saveAsExcelFile(excelBuffer, 'Inventario');
+    });
+ }
+
+  saveAsExcelFile(buffer: any, fileName: string): void {
+    let EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+    let EXCEL_EXTENSION = '.xlsx';
+    const data: Blob = new Blob([buffer], {
+        type: EXCEL_TYPE
+    });
+    FileSaver.saveAs(data, fileName +  + new Date().getTime() + EXCEL_EXTENSION);
+  }
+
+  async onExcelUpload(event: FileSelectEvent) {
+    const file = event.currentFiles[0]
+    readXlsxFile(file).then((rows) => {
+      console.log(rows)
+    })
+  }
 }
