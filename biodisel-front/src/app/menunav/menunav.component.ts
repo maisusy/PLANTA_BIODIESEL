@@ -21,9 +21,14 @@ export class MenunavComponent implements OnInit {
     ngOnInit() {
         this.items = [
             {
-                label: 'Inventario',
+                label: 'Inventario  Familia',
                 icon: 'pi pi-fw pi-file',
             },
+            {
+                label: 'Inventario  Equipos',
+                icon: 'pi pi-fw pi-file',
+            },
+            
             {
                 label: 'Familias',
                 icon: 'pi pi-fw pi-pencil',
@@ -49,13 +54,16 @@ export class MenunavComponent implements OnInit {
 
 
         this.activeItem = event;
- 
+        console.log(event.label)
         switch(event.label){
         case 'Equipos' : 
             this.router.navigate(['equipos']);
         break;
-        case 'Inventario' : 
-            this.router.navigate(['inventario']);
+        case 'Inventario Familia' : 
+            this.router.navigate(['inventario-familia']);
+        break;
+        case 'Inventario Equipos' : 
+            this.router.navigate(['inventario-equipo']);
         break;
         case 'Familias' : 
             this.router.navigate(['familia']);

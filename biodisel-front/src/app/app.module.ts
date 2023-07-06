@@ -10,7 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MenunavModule } from './menunav/menunav.module';
 
 @NgModule({
-  declarations: [							
+  declarations: [								
     AppComponent,
    ],
   imports: [
