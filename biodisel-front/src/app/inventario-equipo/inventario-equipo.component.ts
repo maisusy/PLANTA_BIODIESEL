@@ -1,6 +1,6 @@
 import { Component , OnInit , ViewChild , ElementRef } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { InventarioService } from './inventario.service'
+import { InventarioEquipoService } from './inventario-equipo.service'; 
 import { PrimeNGConfig } from 'primeng/api';
 import * as FileSaver from 'file-saver';
 import readXlsxFile from 'read-excel-file';
@@ -9,14 +9,14 @@ import { FileSelectEvent } from 'primeng/fileupload';
 
 @Component({
   selector: 'app-inventario',
-  templateUrl: './inventario.component.html',
-  styleUrls: ['./inventario.component.css'],
+  templateUrl: './inventario-equipo.component.html',
+  styleUrls: ['./inventario-equipo.component.css'],
   providers: [
     ConfirmationService,
     MessageService
   ]
 })
-export class InventarioComponent implements OnInit {
+export class InventarioEquipoComponent implements OnInit {
 
   public Inventarios : any;
   public modalDatos : any;
@@ -26,7 +26,7 @@ export class InventarioComponent implements OnInit {
   constructor(
     public confirmationService : ConfirmationService,
     public messageService : MessageService,
-    public InventarioService : InventarioService,
+    public InventarioEquipoService : InventarioEquipoService,
     private config: PrimeNGConfig,
   ) { }
 
@@ -85,7 +85,7 @@ export class InventarioComponent implements OnInit {
 
   Eliminar(id : number){
 
-    this.InventarioService.EliminarInventario(id)
+    this.InventarioEquipoService.EliminarInventario(id)
     .subscribe( _ => {
       this.messageService.add({key: 'abm-inventario', severity:'success', summary: `ELIMINACIÓN inventario` , detail:'La acción se realizo correctamente'});
       this.success()
@@ -98,7 +98,7 @@ export class InventarioComponent implements OnInit {
 
   EliminarTodo(){
 
-    this.InventarioService.EliminarTodoInventario()
+    this.InventarioEquipoService.EliminarTodoInventario()
     .subscribe( _ => {
       this.messageService.add({key: 'abm-inventario', severity:'success', summary: `ELIMINACIÓN TODO inventario` , detail:'La acción se realizo correctamente'});
       this.success()
@@ -110,7 +110,7 @@ export class InventarioComponent implements OnInit {
   }
 
   ObtenerInventarios(){
-    this.InventarioService.obtenerInventario()
+    this.InventarioEquipoService.obtenerInventario()
     .subscribe(
       (res) => {
         console.log("inventario",res)

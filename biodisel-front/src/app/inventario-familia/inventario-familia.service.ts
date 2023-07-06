@@ -4,7 +4,7 @@ import { environment } from 'src/environments/environments';
 @Injectable({
   providedIn: 'root'
 })
-export class InventarioService {
+export class InventarioFamiliaService {
 
   private URL: string = "";
 

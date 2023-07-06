@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
-import { InventarioFamiliaService } from '../inventario-familia.service';
+import { InventarioEquipoService } from '../inventario-equipo.service';
 
 @Component({
   selector: 'app-abm-inventario',
@@ -28,7 +28,7 @@ export class AbmInventarioComponent implements OnInit {
 
   constructor(
     private messageService: MessageService,
-    public InventarioService: InventarioFamiliaService,
+    public InventarioEquipoService: InventarioEquipoService,
   ) { }
 
   ngOnInit(): void {
@@ -54,7 +54,7 @@ export class AbmInventarioComponent implements OnInit {
     if (this.formsInventario.valid) {
       if (this.datos == null) {
         delete this.formsInventario.value.id
-        this.InventarioService.AgregarInventario(this.formsInventario.value)
+        this.InventarioEquipoService.AgregarInventario(this.formsInventario.value)
         .subscribe(_ => {
           this.messageService.add({ key: 'abm-inventario', severity: 'success', summary: `${this.accion} inventario`, detail: 'La acción se realizo correctamente' });
         }, error => {
@@ -63,7 +63,7 @@ export class AbmInventarioComponent implements OnInit {
         })
       } else {
         let id = Number(this.formsInventario.value.id)
-        this.InventarioService.ActualizarInventario(id,this.formsInventario.value)
+        this.InventarioEquipoService.ActualizarInventario(id,this.formsInventario.value)
         .subscribe(_ => {
           this.messageService.add({ key: 'abm-inventario', severity: 'success', summary: `${this.accion} inventario`, detail: 'La acción se realizo correctamente' });
         }, error => {

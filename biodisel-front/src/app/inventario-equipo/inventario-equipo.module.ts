@@ -9,18 +9,18 @@ import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { ToastModule } from 'primeng/toast';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { DividerModule } from 'primeng/divider';
-import { InventarioComponent } from './inventario.component';
-import { AbmInventarioModule } from './abm-inventario/abm-inventario.module';
-import { InventarioRoutingModule } from './inventario-routing.module';
+import { InventarioEquipoComponent } from '../inventario-equipo/inventario-equipo.component';
+import { AbmInventarioModule } from '../inventario-equipo/abm-inventario/abm-inventario.module';
+import { InventarioEquipoRoutingModule } from '../inventario-equipo/inventario-equipo-routing.module';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { FileUploadModule } from 'primeng/fileupload';
 
 @NgModule({
   declarations: [
-    InventarioComponent,
+    InventarioEquipoComponent,
   ],
   imports: [
-    InventarioRoutingModule,
+    InventarioEquipoRoutingModule,
     CommonModule,
     ToolbarModule,
     BreadcrumbModule,
@@ -35,5 +35,5 @@ import { FileUploadModule } from 'primeng/fileupload';
     AbmInventarioModule,
     DynamicDialogModule
   ],
-})
-export class InventarioModule { }
+})                  
+export class InventarioEquipoModule { }

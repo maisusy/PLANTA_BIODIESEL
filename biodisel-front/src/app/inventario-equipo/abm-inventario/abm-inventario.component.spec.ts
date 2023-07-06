@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { InventarioComponent } from './inventario.component';
+import { AbmInventarioComponent } from './abm-inventario.component';
 
-describe('InventarioComponent', () => {
-  let component: InventarioComponent;
-  let fixture: ComponentFixture<InventarioComponent>;
+describe('AbmInventarioComponent', () => {
+  let component: AbmInventarioComponent;
+  let fixture: ComponentFixture<AbmInventarioComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InventarioComponent ]
+      declarations: [ AbmInventarioComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InventarioComponent);
+    fixture = TestBed.createComponent(AbmInventarioComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
