@@ -22,6 +22,7 @@ export class InventarioEquipoComponent implements OnInit {
   public modalDatos : any;
   public modal : string = "";
   public loading: boolean = true; 
+  public accion: string = "";
 
   constructor(
     public confirmationService : ConfirmationService,
@@ -85,7 +86,7 @@ export class InventarioEquipoComponent implements OnInit {
 
   Eliminar(id : number){
 
-    this.InventarioEquipoService.EliminarInventario(id)
+    this.InventarioEquipoService.EliminarInventarioEquipo(id)
     .subscribe( _ => {
       this.messageService.add({key: 'abm-inventario', severity:'success', summary: `ELIMINACIÓN inventario` , detail:'La acción se realizo correctamente'});
       this.success()
@@ -98,7 +99,7 @@ export class InventarioEquipoComponent implements OnInit {
 
   EliminarTodo(){
 
-    this.InventarioEquipoService.EliminarTodoInventario()
+    this.InventarioEquipoService.EliminarTodoInventarioEquipo()
     .subscribe( _ => {
       this.messageService.add({key: 'abm-inventario', severity:'success', summary: `ELIMINACIÓN TODO inventario` , detail:'La acción se realizo correctamente'});
       this.success()
@@ -110,7 +111,7 @@ export class InventarioEquipoComponent implements OnInit {
   }
 
   ObtenerInventarios(){
-    this.InventarioEquipoService.obtenerInventario()
+    this.InventarioEquipoService.obtenerInventarioEquipo()
     .subscribe(
       (res) => {
         console.log("inventario",res)
@@ -139,9 +140,35 @@ export class InventarioEquipoComponent implements OnInit {
   }
 
   async onExcelUpload(event: FileSelectEvent) {
+    this.loading = true;
     const file = event.currentFiles[0]
     readXlsxFile(file).then((rows) => {
-      console.log(rows)
-    })
+
+      rows.forEach(value => {
+          let dato = {
+              codigo : value[0],
+              descripcion:value[1],
+              caracteristicas: value[2]
+            }
+
+            if(dato.caracteristicas == null || dato.caracteristicas == ''){
+              dato.caracteristicas = '-'
+            }
+
+            this.InventarioEquipoService.AgregarInventarioEquipo(dato)
+            .subscribe(_ => {
+            }, error => {
+              console.log(error)
+              this.messageService.add({ key: 'abm-inventario', severity: 'error', summary: `${this.accion} inventario `, detail: error.error.error });
+            })
+
+      })
+    
+      this.ObtenerInventarios()
+      
+    }) 
   }
+
+
+
 }

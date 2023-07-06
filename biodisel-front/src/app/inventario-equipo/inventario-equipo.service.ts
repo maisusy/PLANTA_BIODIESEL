@@ -12,24 +12,24 @@ export class InventarioEquipoService {
     this.URL = environment.apiURL
   }
 
-  obtenerInventario(){
+  obtenerInventarioEquipo(){
     return this.http.get(`${this.URL}/inventario_equipo/api`)
   }
 
-  AgregarInventario(datos : any){
+  AgregarInventarioEquipo(datos : any){
     return this.http.post(`${this.URL}/inventario_equipo/api`,datos)
   }
   
-  EliminarInventario(id : number){
+  EliminarInventarioEquipo(id : number){
     return this.http.delete(`${this.URL}/inventario_equipo/api/${id}/`)
   }
 
 
-  EliminarTodoInventario(){
+  EliminarTodoInventarioEquipo(){
     return this.http.delete(`${this.URL}/inventario_equipo/api`)
   }
 
-  ActualizarInventario(id : number,datos : any){
+  ActualizarInventarioEquipo(id : number,datos : any){
     return this.http.put(`${this.URL}/inventario_equipo/api/${id}/`,datos)
   }
 

@@ -54,7 +54,7 @@ export class AbmInventarioComponent implements OnInit {
     if (this.formsInventario.valid) {
       if (this.datos == null) {
         delete this.formsInventario.value.id
-        this.InventarioEquipoService.AgregarInventario(this.formsInventario.value)
+        this.InventarioEquipoService.AgregarInventarioEquipo(this.formsInventario.value)
         .subscribe(_ => {
           this.messageService.add({ key: 'abm-inventario', severity: 'success', summary: `${this.accion} inventario`, detail: 'La acción se realizo correctamente' });
         }, error => {
@@ -63,7 +63,7 @@ export class AbmInventarioComponent implements OnInit {
         })
       } else {
         let id = Number(this.formsInventario.value.id)
-        this.InventarioEquipoService.ActualizarInventario(id,this.formsInventario.value)
+        this.InventarioEquipoService.ActualizarInventarioEquipo(id,this.formsInventario.value)
         .subscribe(_ => {
           this.messageService.add({ key: 'abm-inventario', severity: 'success', summary: `${this.accion} inventario`, detail: 'La acción se realizo correctamente' });
         }, error => {

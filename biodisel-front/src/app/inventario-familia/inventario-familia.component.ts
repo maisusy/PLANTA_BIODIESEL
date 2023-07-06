@@ -22,11 +22,12 @@ export class InventarioFamiliaComponent implements OnInit {
   public modalDatos : any;
   public modal : string = "";
   public loading: boolean = true; 
+  public accion: string = "";
 
   constructor(
     public confirmationService : ConfirmationService,
     public messageService : MessageService,
-    public InventarioService : InventarioFamiliaService,
+    public InventarioFamiliaService : InventarioFamiliaService,
     private config: PrimeNGConfig,
   ) { }
 
@@ -85,7 +86,7 @@ export class InventarioFamiliaComponent implements OnInit {
 
   Eliminar(id : number){
 
-    this.InventarioService.EliminarInventario(id)
+    this.InventarioFamiliaService.EliminarInventarioFamilia(id)
     .subscribe( _ => {
       this.messageService.add({key: 'abm-inventario', severity:'success', summary: `ELIMINACIÓN inventario` , detail:'La acción se realizo correctamente'});
       this.success()
@@ -98,7 +99,7 @@ export class InventarioFamiliaComponent implements OnInit {
 
   EliminarTodo(){
 
-    this.InventarioService.EliminarTodoInventario()
+    this.InventarioFamiliaService.EliminarTodoInventarioFamilia()
     .subscribe( _ => {
       this.messageService.add({key: 'abm-inventario', severity:'success', summary: `ELIMINACIÓN TODO inventario` , detail:'La acción se realizo correctamente'});
       this.success()
@@ -110,7 +111,7 @@ export class InventarioFamiliaComponent implements OnInit {
   }
 
   ObtenerInventarios(){
-    this.InventarioService.obtenerInventario()
+    this.InventarioFamiliaService.obtenerInventarioFamilia()
     .subscribe(
       (res) => {
         console.log("inventario",res)
@@ -139,9 +140,31 @@ export class InventarioFamiliaComponent implements OnInit {
   }
 
   async onExcelUpload(event: FileSelectEvent) {
+    this.loading = true;
     const file = event.currentFiles[0]
     readXlsxFile(file).then((rows) => {
-      console.log(rows)
-    })
+
+      rows.forEach(value => {
+          let dato = {
+              codigo : value[0] ,
+              descripcion:value[1],
+              caracteristicas: value[2]
+            }
+
+            if(dato.caracteristicas == null || dato.caracteristicas == ''){
+              dato.caracteristicas = '-'
+            }
+
+            this.InventarioFamiliaService.AgregarInventarioFamilia(dato)
+            .subscribe(_ => {
+            }, error => {
+              console.log(error)
+              this.messageService.add({ key: 'abm-inventario', severity: 'error', summary: `${this.accion} inventario `, detail: error.error.error });
+            })
+
+      })
+    
+      this.ObtenerInventarios()
+    }) 
   }
 }

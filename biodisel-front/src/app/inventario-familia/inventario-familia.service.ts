@@ -12,24 +12,24 @@ export class InventarioFamiliaService {
     this.URL = environment.apiURL
   }
 
-  obtenerInventario(){
+  obtenerInventarioFamilia(){
     return this.http.get(`${this.URL}/inventario_familia/api`)
   }
 
-  AgregarInventario(datos : any){
+  AgregarInventarioFamilia(datos : any){
     return this.http.post(`${this.URL}/inventario_familia/api`,datos)
   }
   
-  EliminarInventario(id : number){
+  EliminarInventarioFamilia(id : number){
     return this.http.delete(`${this.URL}/inventario_familia/api/${id}/`)
   }
 
 
-  EliminarTodoInventario(){
+  EliminarTodoInventarioFamilia(){
     return this.http.delete(`${this.URL}/inventario_familia/api`)
   }
 
-  ActualizarInventario(id : number,datos : any){
+  ActualizarInventarioFamilia(id : number,datos : any){
     return this.http.put(`${this.URL}/inventario_familia/api/${id}/`,datos)
   }
 

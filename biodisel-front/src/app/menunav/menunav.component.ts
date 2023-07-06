@@ -21,11 +21,11 @@ export class MenunavComponent implements OnInit {
     ngOnInit() {
         this.items = [
             {
-                label: 'Inventario  Familia',
+                label: 'Inventario Familia',
                 icon: 'pi pi-fw pi-file',
             },
             {
-                label: 'Inventario  Equipos',
+                label: 'Inventario Equipos',
                 icon: 'pi pi-fw pi-file',
             },
             
